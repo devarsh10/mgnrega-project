@@ -8,7 +8,8 @@
  * @returns {Promise<Array>} Array of records
  */
 async function fetchDistrictData(state, district, finYear) {
-    const url = `/functions/fetchDistrictData?state=${encodeURIComponent(state)}&district=${encodeURIComponent(district)}&finYear=${encodeURIComponent(finYear)}`;
+    const url = `/fetchDistrictData?state=${encodeURIComponent(state)}&district=${encodeURIComponent(district)}&finYear=${encodeURIComponent(finYear)}`;
+
     
     try {
         const response = await fetch(url);
