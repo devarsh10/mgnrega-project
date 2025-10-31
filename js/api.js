@@ -8,7 +8,7 @@
  * @returns {Promise<Array>} Array of records
  */
 async function fetchDistrictData(state, district, finYear) {
-    const url = `${CONFIG.API_BASE_URL}?api-key=${SECRETS.API_KEY}&format=json&filters[state_name]=${encodeURIComponent(state)}&filters[fin_year]=${encodeURIComponent(finYear)}&filters[district_name]=${encodeURIComponent(district)}`;
+    const url = `/functions/fetchDistrictData?state=${encodeURIComponent(state)}&district=${encodeURIComponent(district)}&finYear=${encodeURIComponent(finYear)}`;
     
     try {
         const response = await fetch(url);
