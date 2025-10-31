@@ -1,6 +1,6 @@
 // API Configuration
 const CONFIG = {
-    API_BASE_URL: 'http://localhost:3000/api/district-performance'
+    API_BASE_URL: 'https://api.data.gov.in/resource/ee03643a-ee4c-48c2-ac30-9f2ff26ab722'
 };
 
 // Field Labels (English)
