@@ -28,9 +28,34 @@ export async function onRequest(context) {
 
     if (cachedData.results && cachedData.results.length > 0) {
       console.log("Returning cached data from database");
+      
+      // Map database column names back to API format
+      const mappedRecords = cachedData.results.map(row => ({
+        fin_year: row.fin_year,
+        month: row.month,
+        state_code: row.state_code,
+        state_name: row.state_name,
+        district_code: row.district_code,
+        district_name: row.district_name,
+        Approved_Labour_Budget: row.approved_labour_budget,
+        Average_Wage_rate_per_day_per_person: row.avg_wage_rate_per_day_per_person,
+        Average_days_of_employment_provided_per_Household: row.avg_days_of_employment_provided_per_household,
+        Differently_abled_persons_worked: row.differently_abled_persons_worked,
+        Material_and_skilled_Wages: row.material_and_skilled_wages,
+        Number_of_Completed_Works: row.number_of_completed_works,
+        Total_No_of_JobCards_issued: row.total_no_of_jobcards_issued,
+        Total_No_of_Workers: row.total_no_of_workers,
+        Wages: row.wages,
+        Women_Persondays: row.women_persondays,
+        percent_of_Expenditure_on_Agriculture_Allied_Works: row.percent_of_expenditure_on_agriculture_allied_works,
+        percent_of_NRM_Expenditure: row.percent_of_nrm_expenditure,
+        percentage_payments_gererated_within_15_days: row.percentage_payments_gererated_within_15_days,
+        Remarks: row.remarks
+      }));
+      
       return new Response(
         JSON.stringify({
-          records: cachedData.results,
+          records: mappedRecords,
           source: "database",
         }),
         {
